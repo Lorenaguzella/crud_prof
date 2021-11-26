@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28-Out-2021 às 14:00
--- Versão do servidor: 10.4.20-MariaDB
--- versão do PHP: 8.0.9
+-- Tempo de geração: 26-Nov-2021 às 17:51
+-- Versão do servidor: 10.4.17-MariaDB
+-- versão do PHP: 7.4.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,10 +40,13 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`idcli`, `nomecli`, `endcli`, `fonecli`, `emailcli`) VALUES
+(1, 'CANTINA ETEC MCM', 'RUA BÉLGICA, 88', '1148484848', 'cantinaetec@email.com'),
 (2, 'PAPELARIA SEILA', 'RUA DO CENTRO, 1234', '11998956464', 'papelaria@email.com'),
-(3, 'CANTINA ETEC', 'RUA BÉLGICA', '11963852741', 'cantina@email.com'),
-(4, 'MECÂNICA', 'RUA JOSÉ FERREIRA', '11987456321', 'mecanica@email.com'),
-(5, 'CABELELEIRA', 'RUA JÚLIO PRESTES', '11958236471', 'cabeleleira@email.com');
+(3, 'José de Souza', 'Rua nonato, 123', '99999-0000', 'jose@email.com'),
+(4, 'João Pedro Ribeiro', 'Rua Sao paulo, 1111', '8888-8888', 'joao@email.com'),
+(5, 'Pedro Sampaio', 'Av belgica, 4321', '5656-5757', 'sampaio@email.com'),
+(6, 'Joaquim andrade', 'Rua eudora, 1456', '7896-6532', 'joaquimmm@email.com'),
+(7, 'Joana Aparecida', 'Av 24 de agosto, 2004', '3698-9000', 'joana@email.com');
 
 -- --------------------------------------------------------
 
@@ -61,6 +64,13 @@ CREATE TABLE `ordem_servico` (
   `servico` varchar(150) NOT NULL,
   `idcli` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `ordem_servico`
+--
+
+INSERT INTO `ordem_servico` (`os`, `data_os`, `equipamento`, `defeito`, `tecnico`, `valor`, `servico`, `idcli`) VALUES
+(1, '2021-07-25 16:48:09', 'COMPUTADOR INTEL I5 - 4G DE RAM - 2T DE HD. COD 1234.5678', 'COMPUTADOR NÃO INICIA VÍDEO.', 'CEBOLINHA', '150.00', 'TROCAR PENTE DE MEMÓRIA. MEMÓRIA EM CURTO.', 1);
 
 -- --------------------------------------------------------
 
@@ -82,14 +92,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`iduser`, `usuario`, `fone`, `login`, `senha`, `perfil`) VALUES
-(1, 'LORENA GUZELLA', '1199999-8888', 'lorena', '1234', 'admin'),
-(2, 'FULANO DA SILVA', '1199999-9999', 'fulano', '1234', 'admin'),
-(3, 'ZEZINHO DA SILVA', '1199999-9999', 'zezinho', '1234', 'user'),
-(4, 'FELIPPA', '99999-5555', 'felippa', '1234', 'user'),
-(5, 'ANA', '99999-5566', 'ana', '1234', 'user'),
-(6, 'SANDRA', '99888-6548', 'sandra', '1234', 'admin'),
-(7, 'ROBERTO', '96325-8741', 'roberto', '1234', 'user'),
-(8, 'ANTONIA', '11995566331', 'antonia', '1234', 'user');
+(1, 'LORENA GUZELLA', '1199999-9999', 'lorena', '1234', 'admin'),
+(2, 'MAYARA APARECIDA', '1199999-9999', 'mayara', '1234', 'admin'),
+(3, 'ZEZINHO DA SILVA', '1199999-9999', 'zezinho', '1234', 'user');
 
 --
 -- Índices para tabelas despejadas
@@ -123,7 +128,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `idcli` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idcli` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `ordem_servico`
@@ -135,7 +140,7 @@ ALTER TABLE `ordem_servico`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restrições para despejos de tabelas
